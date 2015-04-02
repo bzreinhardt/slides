@@ -1,0 +1,218 @@
+On-Orbit Servicing
+Valuable but hard. Four main tasks: inspect, repair, repurpose, remove.
+Aercam - propellant using inspector. Phoenix - mechanical grappler based repurpose
+
+Contactless Actuation
+Four other options (Clockwise from upper left)
+EMFF - electromagnets
+Flux Pinning - permanent magnets and superconductors
+Lasers - potential wells
+Coulomb Tethers - static electricity
+Everything but lasers requires compliant systems. Lasers too small
+
+EC Force Applications
+trash separation 
+active damping and braking
+Mag lev - recent kickstarter
+
+Modeling Eddy-current forces
+Critical for design, path planning, control
+Hard, many specialized ways to do it
+
+Governing equations
+Start with maxwell
+Changing magnetic field causes an electric field
+Changing electric field also causes a magnetic field
+No magnetic monopoles, so the currents have to form a loop
+Current loops depend on conductive material
+Magnetic vector potential
+Solve for the vector potential from the electric field (see how tangled this is?)
+Combine all of the above to get a magnetic potential propigation - form of 3d heat equation
+Assuming A, use Maxwell's Stress Tensor to find Force (big assumption)
+
+Dynamic Solution
+How do you find A in a useful way? Decouple surface and magnetic field.
+Paudel Bird solution - take spatial fourier transform of the field, 
+Gamma depends on the surface
+B depends only on magnet
+Needs to be generalized further when a can be in any orientation
+Deal with in 3 ways:
+full solution for Fz (slow)
+splines (less slow)
+fit (fast)
+
+Generating Eddy-Current Forces
+Goal: verify force model for spacecraft actuation and compare to other options
+
+Air Track Experiments
+Setup in uppder right. From above. Magnet on either side of v shaped plate. Forces tangential to surface. Constrained to 1d motion
+Video from the side - controlled by hand
+
+Air Track Experiments: Results
+Motor speeds: dashed lines
+Force on cart: red line
+increase at top due to filtering error
+
+Contactless Actuator Comparisons
+Specific force - force per watt
+Eddy currents dominate other options
+
+Linear and nonlinear behavior
+From the model:
+At low speeds, normal force ~0 and tangential force ~linear
+Notice increase in normal force at high range - this matters a lot 
+
+Planar Inspection
+Zoom out from characterizing forces to applications.
+Major Contributions
+
+Goal: Control across flat surface
+Assume constrained to plane 
+Layout - notice needing axes that aren't parallel to get torque control. Could do it with two actuators, three to be fully actuated.
+
+Coupler-Augmented Dynamics
+Abstract each coupler to an actuator rigidly attached at some distance from CoM. Notice that the design assumes some sort of arms. 
+This model assumes nice dynamics and a linear map between inputs and forces to get a handle on the world 
+
+Inspector Simulation
+TODO: add labels to plot 
+position,heading,control - all using real values and saturating at 1000 rad/s
+
+Inspection path
+follows follows 7 waypoints with lqr gains 
+
+inspection control
+Main thought: controller can constrain to a reasonable path using real values 
+TODO: make a diagram of the swath that it can cover for results
+
+detumbling
+Main thought:
+
+rotation sensing
+Main thought:
+magnet can detect target spin speed through torque on shaft. Important because tumbling often unknown.
+TODO - equation?
+
+lyapunov stability
+Main thought:
+A magnet-tumbling object system is stable in the sense of lyapunov
+conditions:
+-way to hold magnet still
+-break magnet symmetry with at least three magnets
+
+Todo?: equation?
+
+Active Detumbling
+Main thought:
+Magnet can speed up detumbling by spinning contrary to target motion. Use info from 1 and 2.
+Todo?: equation?
+Todo?: should detumbling go before 2d inspection? more logical flow from inspection--> primitives
+
+Motion Primitives
+Main thought:
+Need different control laws for different configurations and different movements
+
+Planar vs. Out-of-Plane Motion
+Main thought: 
+Very different requirements for moving in a plane vs. out of the plane
+
+The Four Motion Primitives 
+Main thought:
+There are four motion primitives: 
+-Planar Translation
+-Planar rotation
+-oop translation
+-oop rotation
+Composing them can yield 6-DOF motion control
+
+Planar Motion:
+Main thought:
+Conceptually easier: similar to differential drive. Magnet axes parallel to plane. 
+
+Planar Experiment Setup
+Main thought: 
+Note magnet axes parallel to plane
+
+Planar Translation: Simulation
+Main Thought:
+goal is to have rotation-free translation
+forward and backward - larger force than experiments because speed is higher
+y force and torque are due to the plates meshing
+simulations are to give viewer a sense of the primitive's essence
+
+Planar Translation: experiment
+Plate and inspector in lower right corner. 
+
+Planar Rotation: Simulation
+Goal is to have translation-free rotation
+
+Planar rotation: experiment
+Rotate right and then left. 
+Drift is due to coupler asymmetry 
+
+Out-of-Plane Motion
+TODO make link to original force slide
+Takes advantage of tangential forces to control dynamics about axes parallel to the surface
+
+Oop experiment setup. 
+Two couplers w/ axes parallel to curve. Curve matches ISS.
+
+OOP Translation: Simulation
+Note that the force vectors from each coupler are along the surface.
+Danger: if you spin too fast, the vectors separate from the surface
+
+Out-of-Plane Translation: experiment
+Screams for closed loop control
+
+OOP rotation: simulation
+Even in a perfect environment there is inevitable coupling between the rotation and translation
+
+Zone of Safety:
+The oop experiments show that you can get too close - velocity prevents you from creating enough force to return
+And too far - velocity prevents you from ever producing enough force to get back 
+Allowed: 'jump' from one target to the other.
+
+Multi-Primative Trajectory: Setup
+Need 6 static couplers so that it can still control out-of-plane motion oncerotation happened
+
+Mutli-Primative Trajectory: Phases
+1 - translate in +z
+2 - rotate about x
+3 - translate in x
+4 - translate in y
+5 - reorient about z
+
+Multi-Primitive Trajectory: Results 1
+Phase 1: initial input spike to push in z direction, then turn on feedback control. Note the increase in x position.
+Phase 2: long roll reorientation, note coupling between y and roll
+
+Multi-Primitive Trajectory: Results 2 
+phase 3: x repositioning
+phase 4: y translation 
+phase 5: very tiny increase in yaw, but important to keep the couplers aligned correctly 
+
+Probabilistic Design and control
+Raises the question - is the hand designed approach best?
+Intuition is hard. New tools enable automatic robust-ish control
+
+Target systems
+Multi query - don't know exact trajectory profile at design time
+High dimensional - inspector state has at least 12 dimensions: many techniques that work at lower dimensions fail
+Complex Dynamics - actuator saturation means a lot of controllability analysis fails, nonlinearities mean you can't just put a global controller on, state-dependent control means that not all states are equal
+
+Algorithm
+While loop until convergnce conditions
+1 - create a design: can be done randomly, genetic algorithms
+2 - create a bunch of lqr blobs and then add them and their level sets to the controller:this is how the inspector can stabalize itself. Note that 
+3 - connect all unconnected nodes - this is how you know how to plan paths and which controlers to use
+4 - check the total volume of the lqr blobs: proxy for controllable volume
+
+Algorithm: Output Example
+L 2d projections of 12 d stable regions
+R connection roadmap between different nodes. Bold line is path between them.
+
+Algorithm-Human Comparison
+Note the emergent performance of the straight down leg. Possibly suggests 4 actuators is unecessary. 
+
+Algorithm-Baseline Comparison
+Convergence towards optimal pend
