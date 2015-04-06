@@ -287,9 +287,91 @@ Linear and nonlinear behavior
 From the model:
 At low speeds, normal force ~0 and tangential force ~linear
 Notice increase in normal force at high range - this matters a lot 
-</aside></section></section><section class="stack" data-id="029685c9b1b706e34ed3c25379fca87d">
+</aside></section></section>
 
+<section class="stack" data-id="3360be748cff39051159c437fae3ba1e" id="detumbling">
 
+<section data-id="58db0b7f2336e0a46836a677baafe295"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 183px; height: auto;" data-block-id="a6aba7c9118b7e05300738435c89ebc3"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 12;">
+<h1>Detumbling</h1>
+</div></div><aside class="notes" data-markdown>
+detumbling
+Main thought:
+</aside></section>
+
+<section data-id="95edfaba32f1505f743b5c0dea675405">
+
+	<div class="sl-block" data-block-type="image" style="width: 469.444444444444px; height: 700px; left: 480px; top: 0px;" data-block-id="9c7f67f0918d35631ef2324b31ed8637"><div class="sl-block-content" style="z-index: 11;"><img style="visibility: visible;" data-natural-width="507" data-natural-height="756" data-src="http://benjaminreinhardt.com/pictures/svgs/rotation_sensing.svg"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 511px; left: 0px; top: 31px;" data-block-id="e2e87b491ed83f0dcb472c5b5ed75224"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p><span style="font-size:48px">Rotation Sensing</span></p>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="position:absolute; height:auto; min-width:30px; min-height:30px; left:100px; bottom:100px;" id="detumbling-equation">
+<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p><span style="font-size:40px" >
+$$\boldsymbol{\tau} \propto -c\boldsymbol{\omega} + \textbf{r} \times \boldsymbol{\omega} \times \textbf{x}$$
+</span></p>
+</div>
+	</div>
+
+<aside class="notes" data-markdown>
+rotation sensing
+Main thought:
+magnet can detect target spin speed through torque on shaft. Important because tumbling often unknown.
+TODO - equation?
+</aside>
+</section>
+
+<section data-id="eb65f67cc25458dbab46534c58d6c121"><div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 469.444444444444px; height: 700px; left: 486px; top: 0px;" data-block-id="36f2a4571e5dde5d3d7511892173a54d"><div class="sl-block-content" style="z-index: 10;"><img style="visibility: visible;" data-natural-width="507" data-natural-height="756" data-src="http://benjaminreinhardt.com/pictures/svgs/rotating_damping1.svg"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 511px; left: 0px; top: 32px;" data-block-id="0848075b3f98a885b5993f54351df0df"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><span style="font-size:48px">Lyapunov Stability</span></p>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="position:absolute; height:auto; min-width:30px; min-height:30px; left:100px; bottom:100px;" id="detumbling-equation">
+<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p><span style="font-size:40px" >
+$$E = \frac{1}{2} \boldsymbol{\omega} \cdot \mathbb{I} \cdot \boldsymbol{\omega}$$
+$$\dot{E} = -c\| \boldsymbol{\omega}^2 \| $$
+</span></p>
+</div>
+	</div>
+
+<aside class="notes" data-markdown>
+lyapunov stability
+Main thought:
+A magnet-tumbling object system is stable in the sense of lyapunov
+conditions:
+-way to hold magnet still
+-break magnet symmetry with at least three magnets
+</aside>
+</section>
+
+<section data-id="137a2f3e20b506c6b6a22f45703f7fce"><div class="sl-block" data-block-type="image" style="width: 469.444444444444px; height: 700px; left: 480px; top: 0px;" data-block-id="fc74cfc34639445380841e61b776b4d8"><div class="sl-block-content" style="z-index: 10;"><img style="visibility: visible;" data-natural-width="507" data-natural-height="756" data-src="http://benjaminreinhardt.com/pictures/svgs/rotation_damping_active.svg"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 511px; left: 0px; top: 31px;" data-block-id="b0d5a34f64b56a074296af6fd60caf55"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><span style="font-size:48px">Active Detumbling</span></p>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="position:absolute; height:auto; min-width:30px; min-height:30px; left:100px; bottom:100px;" id="detumbling-equation">
+<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p><span style="font-size:40px" >
+$$E = \frac{1}{2} \boldsymbol{\omega} \cdot \mathbb{I} \cdot \boldsymbol{\omega}$$
+$$\dot{E} = -c\| \boldsymbol{\omega}^2 \| -c_2 \|\boldsymbol{\omega} \| \| \boldsymbol{\omega}_m \| $$
+</span></p>
+</div>
+	</div>
+
+<aside class="notes" data-markdown>
+Active Detumbling
+Main thought:
+Magnet can speed up detumbling by spinning contrary to target motion. Use info from 1 and 2.
+Todo?: equation?
+Todo?: should detumbling go before 2d inspection? more logical flow from inspection--> primitives
+</aside></section>
+
+</section>
+
+<!--- 2D inspection stack -->
+<section class="stack" data-id="029685c9b1b706e34ed3c25379fca87d">
 <section data-id="0c69a0bfa4db92fa23086b99237fc14d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 183px; height: auto;" data-block-id="1f319183df76a897712e7da0d4531fe5"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 12;">
 <h1>Planar Inspection</h1>
 </div></div><aside class="notes" data-markdown>
@@ -376,42 +458,12 @@ follows follows 7 waypoints with lqr gains
 inspection control
 Main thought: controller can constrain to a reasonable path using real values 
 TODO: make a diagram of the swath that it can cover for results
-</aside></section></section><section class="stack" data-id="3360be748cff39051159c437fae3ba1e">
+</aside></section></section>
 
 
-<section data-id="58db0b7f2336e0a46836a677baafe295"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 183px; height: auto;" data-block-id="a6aba7c9118b7e05300738435c89ebc3"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 12;">
-<h1>Detumbling</h1>
-</div></div><aside class="notes" data-markdown>
-detumbling
-Main thought:
-</aside></section><section data-id="95edfaba32f1505f743b5c0dea675405"><div class="sl-block" data-block-type="image" style="width: 469.444444444444px; height: 700px; left: 480px; top: 0px;" data-block-id="9c7f67f0918d35631ef2324b31ed8637"><div class="sl-block-content" style="z-index: 11;"><img style="visibility: visible;" data-natural-width="507" data-natural-height="756" data-src="http://benjaminreinhardt.com/pictures/svgs/rotation_sensing.svg"></div></div>
-<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 511px; left: 0px; top: 31px;" data-block-id="e2e87b491ed83f0dcb472c5b5ed75224"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
-<p><span style="font-size:48px">Rotation Sensing</span></p>
-</div></div><aside class="notes" data-markdown>
-rotation sensing
-Main thought:
-magnet can detect target spin speed through torque on shaft. Important because tumbling often unknown.
-TODO - equation?
-</aside></section><section data-id="eb65f67cc25458dbab46534c58d6c121"><div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 469.444444444444px; height: 700px; left: 486px; top: 0px;" data-block-id="36f2a4571e5dde5d3d7511892173a54d"><div class="sl-block-content" style="z-index: 10;"><img style="visibility: visible;" data-natural-width="507" data-natural-height="756" data-src="http://benjaminreinhardt.com/pictures/svgs/rotating_damping1.svg"></div></div>
-<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 511px; left: 0px; top: 32px;" data-block-id="0848075b3f98a885b5993f54351df0df"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
-<p><span style="font-size:48px">Lyapunov Stability</span></p>
-</div></div><aside class="notes" data-markdown>
-lyapunov stability
-Main thought:
-A magnet-tumbling object system is stable in the sense of lyapunov
-conditions:
--way to hold magnet still
--break magnet symmetry with at least three magnets
-</aside></section><section data-id="137a2f3e20b506c6b6a22f45703f7fce"><div class="sl-block" data-block-type="image" style="width: 469.444444444444px; height: 700px; left: 480px; top: 0px;" data-block-id="fc74cfc34639445380841e61b776b4d8"><div class="sl-block-content" style="z-index: 10;"><img style="visibility: visible;" data-natural-width="507" data-natural-height="756" data-src="http://benjaminreinhardt.com/pictures/svgs/rotation_damping_active.svg"></div></div>
-<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 511px; left: 0px; top: 31px;" data-block-id="b0d5a34f64b56a074296af6fd60caf55"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
-<p><span style="font-size:48px">Active Detumbling</span></p>
-</div></div><aside class="notes" data-markdown>
-Active Detumbling
-Main thought:
-Magnet can speed up detumbling by spinning contrary to target motion. Use info from 1 and 2.
-Todo?: equation?
-Todo?: should detumbling go before 2d inspection? more logical flow from inspection--> primitives
-</aside></section></section><section class="stack" data-id="c386e742d6f247ece14161743521419f">
+
+
+<section class="stack" data-id="c386e742d6f247ece14161743521419f">
 
 
 
