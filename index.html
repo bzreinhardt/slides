@@ -502,6 +502,11 @@ Everything but lasers requires compliant systems. Lasers too small</aside></sect
                         </svg>
                     </div>
                 </div>
+                 <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 0px; top: 661px;">
+                    <div class="sl-block-content" style="z-index: 24;">
+                        <p style="font-size:12px" > [Reinhardt, Peck; SciTech '14][Reinhardt, Peck; GNC '12] </p>
+                    </div>
+                </div>
             
 <aside class="notes" data-markdown>
 Critical for: 
@@ -867,6 +872,11 @@ Notice increase in normal force at high range - this matters a lot
                         </svg>
                     </div>
                 </div>
+                 <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 0px; top: 661px;">
+                    <div class="sl-block-content" style="z-index: 24;">
+                        <p style="font-size:12px" > [Reinhardt, Peck; JSR (Submitted)][Reinhardt, Peck; Smallsat 2014] </p>
+                    </div>
+                </div>
             
 <aside class="notes" data-markdown>
 ####Zoom out from characterizing forces to applications.
@@ -1086,6 +1096,12 @@ TODO: make a diagram of the swath that it can cover for results
                             xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="xMidYMid" viewBox="0 0 77 77">
                             <polygon points="38.5,77 77,38.5 53.9,38.5 53.9,0 23.099999999999998,0 23.099999999999998,38.5 0,38.5 38.5,77" class="shape-element" fill="#000000"></polygon>
                         </svg>
+                    </div>
+                </div>
+
+                 <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 0px; top: 661px;">
+                    <div class="sl-block-content" style="z-index: 24;">
+                        <p style="font-size:12px" > [Reinhardt, Peck; IEEE Trans. Robot (Submitted)][Reinhardt, Peck; ICRA '15] </p>
                     </div>
                 </div>
 
@@ -1427,6 +1443,13 @@ phase 5: very tiny increase in yaw, but important to keep the couplers aligned c
                         </svg>
                     </div>
                 </div>
+
+ <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 0px; top: 661px;">
+                    <div class="sl-block-content" style="z-index: 24;">
+                        <p style="font-size:12px" >  [Reinhardt, Knepper, Peck; IJRR. (Submitted)]</p>
+                    </div>
+                </div>
+
             </section>
         <aside class="notes" data-markdown>
 
@@ -1439,14 +1462,11 @@ Intuition is hard. New tools enable automatic robust-ish control
 
 <section data-id="99741d8dc15d9252682f08e27b176c9c"><div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 851.444776119403px; height: 694px; left: 108.555223880597px; top: 6px;" data-block-id="7a0b3aeef0f0161f70db874433468be3"><div class="sl-block-content" style="z-index: 10;"><img style="visibility: visible;" data-natural-width="411" data-natural-height="335" data-src="http://benjaminreinhardt.com/pictures/svgs/venn_diagram.svg"></div></div>
 <div class="sl-block" data-block-type="text" style="width: 281px; left: 0px; top: 0px; height: auto;" data-block-id="ec083cd8188bef7a0eb7a8c37f71aa39"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 12;">
-<h1><span style="font-size:32px; line-height:41.5999984741211px">Target Systems</span></h1>
+<h1><span style="font-size:32px; line-height:41.5999984741211px">Why Algorithmic Design?</span></h1>
 </div></div><aside class="notes" data-markdown>
-####Probabilistic design control solves subset 
-Multi query - don't know exact trajectory profile at design time
+Optimization and genetic algorithms fall short here
 
-High dimensional - inspector state has at least 12 dimensions: many techniques that work at lower dimensions fail
-
-Complex Dynamics - actuator saturation means a lot of controllability analysis fails, nonlinearities mean you can't just put a global controller on, state-dependent control means that not all states are equal
+High dimensional, underactuated, nonlinear, multi-query
 </aside></section>
 
 <!--Algorithm execution -->
